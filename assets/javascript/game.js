@@ -10,7 +10,7 @@
    These will have their own ID and their and class that will link to
    bootstrap buttons.
     I'm thinking of looking for something that looks like a crystal from the
-    CSS bootstrap website
+    CSS bootstrap website if I can find it
 
    These buttons will all be in the same div
 
@@ -83,3 +83,56 @@
    To that end, do not refresh the page as a means to restart the game.*/
       
 //code starts here
+
+//create a function that declares a variable with a random number assigned to it
+//this will eventually be added to a 'box' that displays to the user the number they have to match
+
+function randomize(randomNumber) {
+  // When the function runs, a randomNumber is generated 
+  randomNumber = Math.floor(Math.random() * 120) + 19; //this number is between 19 and 120 
+  console.log(randomNumber);
+};
+
+//let's declare some global variables
+let firstNumber;
+let secondNumber;
+let thirdNumber;
+let fourthNumber;
+let isButtonPressed;
+let isCalculated;
+
+
+
+randomize();
+
+//use a function 'roulette' that will run through the game's logic.
+function roulette() {
+  //start with creating a function scope with variables declared (by default) at the beginning of the game
+
+  firstNumber = '';
+  secondNumber = '';
+  thirdNumber = '';
+  fourthNumber = '';
+  isButtonPressed = false; //Is the button pressed?
+  isAdded = false; //Are the random numbers added?
+
+  //empty each html button
+  $("#firstNo, #secondNo, #thirdNo, #fourthNo").empty();
+
+  //add an on-click function to all elements with class game-button
+  $(".game-button").on("click", function() {
+    
+    //If anything has been added, then just return the addition value
+    if (isAdded) return; 
+    //a function generates a random number
+    function randomize() {
+      // When the function runs, a randomNumber is generated 
+      randomNumber = Math.floor(Math.random() * 120) + 19; //this number is between 19 and 120 
+      console.log(randomNumber);
+    }; 
+  });
+  
+};
+
+
+
