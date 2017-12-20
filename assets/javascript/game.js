@@ -101,8 +101,7 @@ let fourthNumber;
 let isButtonPressed;
 let isCalculated;
 
-
-
+//invoke the first the randomization
 randomize();
 
 //use a function 'roulette' that will run through the game's logic.
@@ -120,19 +119,25 @@ function roulette() {
   $("#firstNo, #secondNo, #thirdNo, #fourthNo").empty();
 
   //add an on-click function to all elements with class game-button
+  
   $(".game-button").on("click", function() {
     
     //If anything has been added, then just return the addition value
+  
     if (isAdded) return; 
+    
+    //if
     //a function generates a random number
-    function randomize() {
+    function randomize(randomNumber) {
       // When the function runs, a randomNumber is generated 
       randomNumber = Math.floor(Math.random() * 120) + 19; //this number is between 19 and 120 
       console.log(randomNumber);
-    }; 
-  });
-  
+    };
+    randomize(); 
+  });  
 };
+roulette();
+
 
 
 
