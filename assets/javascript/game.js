@@ -84,60 +84,77 @@
       
 //code starts here
 
-//create a function that declares a variable with a random number assigned to it
-//this will eventually be added to a 'box' that displays to the user the number they have to match
+//CRUCIAL STEP: ENGLOBAR DOCUMENTO EN DOCUMENT.READY(FUNCTION() {})
+$(document).ready(function() { 
+//declare an object literal that will contain our global variables
 
-function randomize(randomNumber) {
-  // When the function runs, a randomNumber is generated 
-  randomNumber = Math.floor(Math.random() * 120) + 19; //this number is between 19 and 120 
-  console.log(randomNumber);
-};
+const isButtonPressed = false;
+const isCalculated = false;
 
-//let's declare some global variables
-let firstNumber;
-let secondNumber;
-let thirdNumber;
-let fourthNumber;
-let isButtonPressed;
-let isCalculated;
+//declare an array for strings for each button to be assigned
+//a random number
 
-//invoke the first the randomization
-randomize();
+const crystalList = [
+  $("#firstCrystal"),
+  $("#secondCrystal"),
+  $("#thirdCrystal"),
+  $("#fourthCrystal"),
+];
 
-//use a function 'roulette' that will run through the game's logic.
-function roulette() {
-  //start with creating a function scope with variables declared (by default) at the beginning of the game
+//we select the div with a matching name where my game will live
+const gameContainer = $("#gameDiv");
 
-  firstNumber = '';
-  secondNumber = '';
-  thirdNumber = '';
-  fourthNumber = '';
-  isButtonPressed = false; //Is the button pressed?
-  isAdded = false; //Are the random numbers added?
+//we declare a variable compNumber as an empty array
+const compNumber = [];
 
-  //empty each html button
-  $("#firstNo, #secondNo, #thirdNo, #fourthNo").empty();
+// this function creates a randomNumber for the computer
+function randomNumberComputer(randomNumber) {
+  //when this function runs, a randomNumber is generated
+  //this number is between 19 and 120
+  randomNumber = String(Math.floor(Math.random() * 120) + 19);
+  //we push randomNumber into compNumber
+  compNumber.push(randomNumber);  
+}
 
-  //add an on-click function to all elements with class game-button
-  
-  $(".game-button").on("click", function() {
-    
-    //If anything has been added, then just return the addition value
-  
-    if (isAdded) return; 
-    
-    //if
-    //a function generates a random number
-    function randomize(randomNumber) {
-      // When the function runs, a randomNumber is generated 
-      randomNumber = Math.floor(Math.random() * 120) + 19; //this number is between 19 and 120 
-      console.log(randomNumber);
-    };
-    randomize(); 
-  });  
-};
-roulette();
+//we invoke the randomNumberComputer function.
+randomNumberComputer();
+//we create divs and add the content
+const newGameDiv = $("<div>");
+newGameDiv.html("<p>" + compNumber[0] + "</p>");
+// add this new div gameContainer
+gameContainer.append(newGameDiv);
 
+//now we repeat this step for every item in crystalList
+
+// we declare an empty array userNumber
+const userNumber = [];
+
+// for every item in crystalList...
+for (let i = 0; i < crystalList.length; i++) {
+// pass the following function
+function randomNumberUser(randomNumber) {
+    // when this function runs, a randomNumber is generated
+      // this number is from 1 - 12
+    randomNumber = String(Math.floor(Math.random() * 10) + 12);
+    // we push randomNumber into userNumber
+    userNumber.push(randomNumber);
+}
+// we invoke the above function for every item...
+randomNumberUser();
+
+// then we use this value to each crystal
+const crystalButton = $(".crystal");
+// we add attributes and values to each "crystal".
+$(crystalButton).val(userNumber[i]);  
+
+// add the crystalButton to newUserDiv and this to userDiv
+newUserDiv.append(crystalButton);
+userDiv.append(newUserDiv);
+}
+
+// next, I need to create some onclick events that will
+
+});
 
 
 
