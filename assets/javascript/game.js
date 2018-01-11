@@ -85,75 +85,131 @@
 //code starts here
 
 //CRUCIAL STEP: ENGLOBAR DOCUMENTO EN DOCUMENT.READY(FUNCTION() {})
-$(document).ready(function() { 
-//declare an object literal that will contain our global variables
+$(document).ready(function() {
 
-const isButtonPressed = false;
-const isCalculated = false;
+  // make some variables global to the runtime of the application
+  let gameSum; 
+  let compNumber;
+  let userNumber;
+  let wins;
+  let losses;
 
-//declare an array for strings for each button to be assigned
-//a random number
+  //declare an array that contains each crystal
+  const crystalList = [
+    $("#firstCrystal"),
+    $("#secondCrystal"),
+    $("#thirdCrystal"),
+    $("#fourthCrystal"),
+  ];
 
-const crystalList = [
-  $("#firstCrystal"),
-  $("#secondCrystal"),
-  $("#thirdCrystal"),
-  $("#fourthCrystal"),
-];
+    wins = 0;
+    losses = 0;
+  // we use a function to initialize crystalCollectors to guarantee that the app will reset
 
-//we select the div with a matching name where my game will live
-const gameContainer = $("#gameDiv");
+  function initializeCrystalCollectors() {
+    gameSum = 0;
+    compNumber = "";
+    userNumber = [];
+    
+    // let's first empty some divs with the jQuery .empty() method
+    $("#compNumber, #sum").empty();
 
-//we declare a variable compNumber as an empty array
-const compNumber = [];
+    // we start with a function that creates a random number between 19 and 120 for the computer
+    function randomizeComputer(min, max) {
+      // a random number is assigned to compNumber
+      compNumber = Math.floor(Math.random() * (max - min) + min);
 
-// this function creates a randomNumber for the computer
-function randomNumberComputer(randomNumber) {
-  //when this function runs, a randomNumber is generated
-  //this number is between 19 and 120
-  randomNumber = String(Math.floor(Math.random() * 120) + 19);
-  //we push randomNumber into compNumber
-  compNumber.push(randomNumber);  
-}
+      //we select the div with a matching name
+      let computerNumber = $("#compNumber");
 
-//we invoke the randomNumberComputer function.
-randomNumberComputer();
-//we create divs and add the content
-const newGameDiv = $("<div>");
-newGameDiv.html("<p>" + compNumber[0] + "</p>");
-// add this new div gameContainer
-gameContainer.append(newGameDiv);
+      //we create a div and add compNumber as html content to it
+      let newGameDiv = $("<div>");
+      newGameDiv.html("<p>" + compNumber + "</p>");
+      // append this new div gameContainer
+      computerNumber.append(newGameDiv); 
+    }
 
-//now we repeat this step for every item in crystalList
+    // we invoke randomizeComputer
+    randomizeComputer(19, 120);
 
-// we declare an empty array userNumber
-const userNumber = [];
+    // we now follow with a function that creates a random number between 1-12 assigned to the crystals
+    
+    function randomizeCrystal() {
+      // for every item in crystalList...
+      for (let i = 0; i < crystalList.length; i++) {
+        // pass the following function
+        function randomNumberUser(min, max,randomNumber) {
+            // when this function runs, a randomNumber between 1-12 is generated
+            randomNumber = Math.floor(Math.random() * (max - min) + min);
+            // we push randomNumber into userNumber
+            userNumber.push(randomNumber);
+        }
+        // we invoke the above function for every item...
+        randomNumberUser(1,12);  
+        // we the value of each userNumber to their respective crystal.
+        crystalList[i].val(userNumber[i]);  
+        }
+      }
+    
+    // and we invoke randomizeCrystal!
+    randomizeCrystal();
 
-// for every item in crystalList...
-for (let i = 0; i < crystalList.length; i++) {
-// pass the following function
-function randomNumberUser(randomNumber) {
-    // when this function runs, a randomNumber is generated
-      // this number is from 1 - 12
-    randomNumber = String(Math.floor(Math.random() * 10) + 12);
-    // we push randomNumber into userNumber
-    userNumber.push(randomNumber);
-}
-// we invoke the above function for every item...
-randomNumberUser();
+  }
 
-// then we use this value to each crystal
-const crystalButton = $(".crystal");
-// we add attributes and values to each "crystal".
-$(crystalButton).val(userNumber[i]);  
+  // let's show the player his/her score
+    // we select relevant divs where scores will live
+    let userWins = $("#wins");
+    let userLosses = $("#losses");
+    
+    // select the class to operate on both divs at once
+    let userScore = $(".score");
+    
+    // next we create an on-click function for when the user clicks on the crystals
+    
+    // when the crystals are clicked...
+    $(".crystal").on("click", function() {
 
-// add the crystalButton to newUserDiv and this to userDiv
-newUserDiv.append(crystalButton);
-userDiv.append(newUserDiv);
-}
+      // gameSum will equal itself plus the crystal's integer value
+      gameSum = gameSum + Number($(this).val());
+        
+      // gameSum is added to #sum with the .text method  
+      $("#sum").text(gameSum);
 
-// next, I need to create some onclick events that will
+      // after showing the gameSum to the player we check on the conditions to determine wins/losses
+      
+      // if gameSum is greater than compNumber ...
+      if (gameSum > compNumber) { 
+        // we declare a function gameLost
 
+        function gameLost() {
+          // we declare a variable lost equal to lossess incremented by one
+          let lost = losses++;
+          // we then add content to the #losses div 
+          $("#losses").text("Losses: " + lost);
+        }
+
+        // we invoke this gameLost function!
+        gameLost();
+        // then we initializeCrystalCollectors (restart the game)
+        initializeCrystalCollectors();
+      }
+
+      // but if gameSum equals compNumber ...
+      else if (gameSum === compNumber) {
+        // we initializeCrystalCollectors once again
+        initializeCrystalCollectors();
+        // we declare a function gameWon!
+        function gameWon() {
+          let won = wins++;
+          $("#wins").text("Wins: " + won);
+        }
+
+        // and we invoke it!
+        gameWon();
+      }
+
+    });
+  initializeCrystalCollectors();
 });
 
 
