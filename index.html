@@ -1,53 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crystal Collectors!</title>
 
-    <!-- Added link to the jQuery Library -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Link to Bootstrap CSS -->
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
-    <!-- Link to local js file -->
-    <script type="text/javascript" src="assets/javascript/game.js"></script> 
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
+
 <body>
     <div id="masterdiv">
-        <div id="headerdiv"></div>
-            <!-- This is where my header lives -->
-        <div id="gameDiv">
-            <!-- This is where my game lives -->
-            <div id="compNumber"></div>
-                <!-- The computer's number lives here  -->
-            <div id="button-div">
-                <!-- This is where my buttons live -->
-                <button id="firstCrystal" class="btn btn-primary number crystal"></button>
-                <button id="secondCrystal" class="btn btn-primary number crystal"></button>
-                <button id="thirdCrystal" class="btn btn-primary number crystal"></button>
-                <button id="fourthCrystal" class="btn btn-primary number crystal"></button>
+        <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo">Logo</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="#about-header">ReadMe</a>
+                    </li>
+                    <li>
+                        <a href="#connect-header">Contact</a>
+                    </li>
+                </ul>
+
+                <ul id="nav-mobile" class="side-nav">
+                    <li>
+                        <a href="#">Navbar Link</a>
+                    </li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse">
+                    <i class="material-icons">menu</i>
+                </a>
             </div>
-            <div id="userSum">
-               <!--The user's number sum lives here  -->
-               <div id="sum"></div>
+        </nav>
+
+        <div id="index-banner" class="parallax-container">
+            <div class="section no-pad-bot">
+                <div class="container">
+                    <h1 class="header center teal-text text-lighten-2">Crystal Collectors</h1>
+                    <div class="row center" id="game-div">
+                        <h5 class="header col s12 light">Play to win!</h5>
+                    </div>
+                    <div class="row center" id="game-sum">
+                        <h5 class="header col s12 light">Sum of crystals will be kept here!</h5>
+                    </div>
+                    <div class="row center" id="user-score">
+                        <h5 class="header col s12 light">User score will be kept here!</h5>
+                    </div>
+                </div>
             </div>
-            <div id="userScore">
-                <div id="wins" class="score"></div>
-                <div id="losses" class="score"></div> 
-            </div>    
-        </div>
-        <div id="footerdiv">
-            <!-- This is where my footer lives -->
+
+            <div class="parallax">
+                <img src="assets/images/background1.jpg" alt="Unsplashed background img 1">
+            </div>
         </div>
     </div>
-    
+
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would
+                        help support and continue development on this project and is greatly appreciated.</p>
+
+
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Settings</h5>
+                    <ul>
+                        <li>
+                            <a class="white-text" href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li>
+                            <a class="white-text" href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by
+                <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="assets/javascript/materialize.js"></script>
+    <script src="assets/javascript/init.js"></script>
+    <!-- Link to local js file -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
 </body>
+
 </html>
