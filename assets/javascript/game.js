@@ -5,8 +5,8 @@
 
 // make some variables global to the runtime of the application
 let gameSum = 0;
-let wins = 1;
-let losses = 1;
+let wins = 0;
+let losses = 0;
 let randomNumber;
 
 // create an object called crystals
@@ -42,7 +42,7 @@ const CrystalConstructor = function () {
   this.crystals = crystalArray.map(crystal => this.newCrystals.push(new Crystal(crystal)));
   // function that takes Crystal objects and displays them to the user
   this.display = function () {
-    this.newCrystals.forEach(crystal => $("#game-div").append(crystal.button));
+    this.newCrystals.forEach(crystal => $("#buttons-div").append(crystal.button));
   }
   console.log(this.newCrystals);
   // we write a method that assigns a random computerNumber and displays it to the user between 19 and 120
@@ -51,8 +51,8 @@ const CrystalConstructor = function () {
     max = 120;
     randomNumber = Math.floor(Math.random() * (max - min) + min);
     // we attach this randomNumber to an html element and append to #game-div
-    let randomNumberDiv = $("<div>").append(randomNumber);
-    $("#game-div").append(randomNumberDiv);
+    // let randomNumberDiv = $("<div>").append("Number to match: " + randomNumber);
+    $("#computer-number").html("<h4> Number to match: " + randomNumber + "</h4>");
   }
 
   this.clickEvents = function () {
@@ -62,16 +62,15 @@ const CrystalConstructor = function () {
       gameSum = gameSum + Number(this.dataset.number);
       console.log(gameSum);
 
-      // gameSum is added to #sum with the.text method
-      $("#game-sum").html(gameSum);
-
+      // we create a gameSum div and assign the value of gameSum with the .html method
+      $("#user-sum").html("<h5> Sum of crystals: " + gameSum + "</h5>");
       // after showing the gameSum to the player we check on the conditions to determine wins/losses
       // if gameSum is greater than compNumber ...
       if (gameSum > randomNumber) {
         gameLost();
         gameSum = 0;
         test = new CrystalConstructor();
-        // $("#game-div").empty();
+        $("#buttons-div").empty();
         test.display();
         test.randomComputer();
         test.clickEvents();
@@ -83,8 +82,10 @@ const CrystalConstructor = function () {
 
         gameSum = 0;
         test = new CrystalConstructor();
+        $("#buttons-div").empty();
         test.display();
         test.randomComputer();
+        test.clickEvents();
       }
     })
   };
@@ -98,29 +99,14 @@ test.clickEvents();
 
 // we declare a function gameLost
 function gameLost() {
-  // we declare a variable lost equal to lossess incremented by one
-  let lost = losses++;
-  // we then create a lossesDiv div
-  let lossesDiv = $("<div>");
-  // add text to let the user know their score
-  lossesDiv.text("Losses: " + lost);
-  // we then append the score to #user-score
-  $("#user-score").append(lossesDiv);
-  // and we empty the #game-sum and #game-div div
-  $("#game-sum").empty();
-  $("#game-div").empty();
+  losses = losses++;
+  $("#score-number").html("<h5> Losses: " + Number(losses++) + " Wins: " + wins + "</h5>");
+
 }
 
 // we declare a function gameWon!
 function gameWon() {
-  let won = wins++;
-
-  let winsDiv = $("<div>");
-  winsDiv.text("Wins: " + won);
-  $("#user-score").append(winsDiv);
-  // and we empty the #game-sum and #game-div div
-  $("#game-sum").empty();
-  $("#game-div").empty();
+  $("#score-number").html("<h5> Losses: " + losses + " Wins: " + Number(wins++) + "</h5>");
 }
 
 

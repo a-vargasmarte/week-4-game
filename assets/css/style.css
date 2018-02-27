@@ -56,3 +56,35 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+#buttons-div {
+  margin-left: 80px;
+}
+
+/* background color */
+
+body {
+  background-color: #395C6B;
+}
+
+.count-holder {
+  background-color: #158B2D;
+  height: 300px;
+}
+
+.header {
+  color: #D2DF61;
+}
+
+.page-footer, .footer-copyright {
+  background-color: #D2DF61;
+}
+
+.menu-icon {
+  color: #D2DF61;
+}
+
+#crystal-image {
+  height: 100%;
+  width: 100%;
+}

@@ -11,106 +11,127 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <!-- fontawesome icons -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
 </head>
 
 <body>
     <div id="masterdiv">
-        <nav class="white" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="#" class="brand-logo">Logo</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="#about-header">ReadMe</a>
-                    </li>
-                    <li>
-                        <a href="#connect-header">Contact</a>
-                    </li>
-                </ul>
 
-                <ul id="nav-mobile" class="side-nav">
-                    <li>
-                        <a href="#">Navbar Link</a>
-                    </li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse">
-                    <i class="material-icons">menu</i>
+        <ul id="slide-out" class="side-nav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img id="crystal-image" src="assets/images/pexels-crystals.jpeg">
+                    </div>
+                    <a href="#!user">
+                        <img class="circle" src="images/yuna.jpg">
+                    </a>
+                    <a href="#!name">
+                        <span class="white-text name">Alberto Vargas</span>
+                    </a>
+                    <a href="#!email">
+                        <span class="white-text email">a.vargasmarte@gmail.com</span>
+                    </a>
+                </div>
+                <br>
+            </li>
+            <li>
+                <a class="waves-effect" href="https://a-vargasmarte.github.io/">
+                    <i class="fas fa-briefcase fa-2x"></i>
+
+                    Back to portfolio</a>
+            </li>
+            <li>
+                <a class="waves-effect" href="https://github.com/a-vargasmarte/week-4-game">
+                    <i class="fab fa-github fa-2x"></i>
+
+                    Project Github Repo</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a class="subheader">Connect with me!</a>
+            </li>
+            <li>
+                <a class="waves-effect" href="https://www.linkedin.com/in/a-vargasmarte">
+                    <i class="fab fa-linkedin fa-2x"></i>
+
                 </a>
-            </div>
-        </nav>
+                <a class="waves-effect" href="https://github.com/a-vargasmarte">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse">
+            <i class="material-icons menu-icon">menu</i>
+        </a>
 
-        <div id="index-banner" class="parallax-container">
-            <div class="section no-pad-bot">
-                <div class="container">
-                    <h1 class="header center teal-text text-lighten-2">Crystal Collectors</h1>
-                    <div class="row center" id="game-div">
-                        <h5 class="header col s12 light">Play to win!</h5>
-                    </div>
-                    <div class="row center" id="game-sum">
-                        <h5 class="header col s12 light">Sum of crystals will be kept here!</h5>
-                    </div>
-                    <div class="row center" id="user-score">
-                        <h5 class="header col s12 light">User score will be kept here!</h5>
+        <div class="section no-pad-bot">
+            <h1 class="header center">Crystal Collectors</h1>
+            <div class="row" id="content-row">
+                <div class="col s12 m2"></div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="assets/images/background1.jpg" id="background-image">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Click image for game rules.
+                                <i class="material-icons right">more_vert</i>
+                            </span>
+                            <p>
+                                <a href="https://github.com/a-vargasmarte/week-4-game#week-4-game" target="blank">Click here for more information!</a>
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Game Rules
+                                <i class="material-icons right">close</i>
+                            </span>
+                            <p>The rules are super simple:</p>
+                            <ol>
+                                <li>Click on the crystal buttons to reveal their value. You can accumulate the crystals' values
+                                    as you click.</li>
+                                <li>Try to match the sum of crystals to the random number presented to you to win.</li>
+                                <li>Have fun!</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="parallax">
-                <img src="assets/images/background1.jpg" alt="Unsplashed background img 1">
+                <div class="card-panel count-holder col s12 m4">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="row" id="computer-number">
+                            </div>
+                            <div class="row" id="user-sum">
+                            </div>
+                            <div class="row" id="score-number">
+                            </div>
+                            <!-- <div class="row" id="buttons-div">
+
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="row" id="buttons-div">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer class="page-footer teal">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Company Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would
-                        help support and continue development on this project and is greatly appreciated.</p>
-
-
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Settings</h5>
-                    <ul>
-                        <li>
-                            <a class="white-text" href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a class="white-text" href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a class="white-text" href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a class="white-text" href="#!">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Connect</h5>
-                    <ul>
-                        <li>
-                            <a class="white-text" href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a class="white-text" href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a class="white-text" href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a class="white-text" href="#!">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <footer class="page-footer">
         <div class="footer-copyright">
-            <div class="container">
-                Made by
-                <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-            </div>
+            <i class="far fa-copyright"></i>
+            <a class="white-text" href="https://a-vargasmarte.github.io/">Alberto Vargas</a>
         </div>
     </footer>
 
